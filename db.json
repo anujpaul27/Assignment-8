@@ -1,5 +1,5 @@
 {
-  "tiles": [
+  "tilesFeature": [
     {
       "id": "tile_001",
       "title": "Ceramic Blue Tile",
@@ -47,7 +47,10 @@
       "dimensions": "60x60 cm",
       "material": "Glass",
       "inStock": true
-    },
+    }
+  ],
+
+  "allTiles": [
     {
       "id": "tile_005",
       "title": "Sand Clay Terracotta",
@@ -118,6 +121,54 @@
       "currency": "USD",
       "dimensions": "60x60 cm",
       "material": "Ceramic",
+      "inStock": true
+    },
+    {
+      "id": "tile_001",
+      "title": "Ceramic Blue Tile",
+      "description": "Premium ceramic tile with blue glaze finish",
+      "image": "https://media.istockphoto.com/id/1221207640/photo/background-millennial-pink-pale-mermaid-pattern-pastel-texture-abstract-fish-dragon-reptile.jpg?s=612x612&w=0&k=20&c=wXLDaLCybT4YxLn4SqVi_mZXyEZ0-TDfGwItMek8eWU=",
+      "category": "ceramic",
+      "price": 45.99,
+      "currency": "USD",
+      "dimensions": "60x60 cm",
+      "material": "Ceramic",
+      "inStock": true
+    },
+    {
+      "id": "tile_002",
+      "title": "Slate Grey Stone Tile",
+      "description": "Natural slate finish with a textured surface for modern bathrooms.",
+      "image": "https://media.istockphoto.com/id/515483752/photo/moroccan-vintage-tile-background.jpg?s=612x612&w=0&k=20&c=WdgdOQA-SiZWqpxlEsEz0cpw6IAjzXn7j0YtDfyrNVs=",
+      "category": "stone",
+      "price": 57.11,
+      "currency": "USD",
+      "dimensions": "60x60 cm",
+      "material": "Slate",
+      "inStock": true
+    },
+    {
+      "id": "tile_003",
+      "title": "Pure White Ceramic Tile",
+      "description": "Minimalist high-gloss white ceramic tile for bright interiors.",
+      "image": "https://media.istockphoto.com/id/1219314416/photo/white-hexagonal-seamless-tile-texture.jpg?s=612x612&w=0&k=20&c=97I3_p4zovV-65OhNV63Rt1agGpn3sKRQXiu7xxsLTs=",
+      "category": "ceramic",
+      "price": 35.94,
+      "currency": "USD",
+      "dimensions": "60x60 cm",
+      "material": "Ceramic",
+      "inStock": true
+    },
+    {
+      "id": "tile_004",
+      "title": "Emerald Glass Mosaic",
+      "description": "Vibrant emerald glass tile perfect for kitchen backsplashes.",
+      "image": "https://media.istockphoto.com/id/609684810/photo/quartz-surface-for-bathroom-or-kitchen-countertop.jpg?s=612x612&w=0&k=20&c=mQflX8c66n2pDR3DpDJBT0IYobJ9KYNSAVagGArGfC4=",
+      "category": "glass",
+      "price": 71.43,
+      "currency": "USD",
+      "dimensions": "60x60 cm",
+      "material": "Glass",
       "inStock": true
     }
   ]

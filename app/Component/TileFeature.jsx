@@ -1,45 +1,32 @@
 import Image from "next/image";
 
-const BestSeller = async () => {
-  const res = await fetch("http://localhost:3001/tiles");
+const TileFeature = async () => {
+  const res = await fetch("http://localhost:3001/tilesFeature");
   const data = await res.json();
-  console.log(data);
 
   return (
     <div>
-      {/* Our Best Sellers Section */}
-      <section className="py-20 bg-neutral-50">
+      <section className="py-10 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-6">
-          {/* Header */}
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-neutral-900 mb-2">
-              TILES FEATURE 
+              TILES FEATURE
             </h2>
 
-            <div className="flex justify-center gap-3 mt-6">
-              <button className="btn btn-sm bg-amber-700 hover:bg-amber-800 text-white border-none px-6">
-                NEW ARRIVALS
-              </button>
-              <button className="btn btn-sm btn-outline border-neutral-300 text-neutral-700 hover:bg-neutral-100 px-6">
-                NEW ARRIVALS
-              </button>
-              <button className="btn btn-sm btn-outline border-neutral-300 text-neutral-700 hover:bg-neutral-100 px-6">
-                NEW ARRIVALS
-              </button>
-            </div>
+            
           </div>
 
           {/* Product Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {data.map((tile) => (
+            {data?.map((tile) => (
               <div
-                key={tile.id}
+                key={tile?.id}
                 className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all"
               >
                 <div className="relative h-64 bg-neutral-100">
                   <Image
                     blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg=="
-                    src={tile.image}
+                    src={tile?.image}
                     alt="Zurich Vision 60x60"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -52,21 +39,19 @@ const BestSeller = async () => {
                 </div>
                 <div className="p-5 text-center">
                   <h3 className="font-medium text-neutral-900 mb-1">
-                    {tile.title}
+                    {tile?.title}
                   </h3>
 
                   <div className="flex items-center justify-center my-2  gap-2 text-sm">
-                    <span className="text-lg  text-black  ">Price:</span> 
+                    <span className="text-lg  text-black  ">Price:</span>
                     <span className="font-semibold text-emerald-600 text-lg  ">
-                      ${(tile.price - (tile.price * 9) / 100).toFixed(2)}
+                      ${(tile?.price - (tile?.price * 9) / 100).toFixed(2)}
                     </span>
                     <span className="line-through text-neutral-400   ">
-                       {tile.price}
+                      {tile?.price}
                     </span>
                   </div>
-                    <span className="btn btn-success ">
-                      View Details
-                    </span>
+                  <span className="btn btn-success ">View Details</span>
                 </div>
               </div>
             ))}
@@ -84,4 +69,4 @@ const BestSeller = async () => {
   );
 };
 
-export default BestSeller;
+export default TileFeature;

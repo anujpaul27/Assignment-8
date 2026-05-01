@@ -28,7 +28,7 @@ const Navbar = async () => {
           <Link href="/" className="hover:text-amber-600 transition-colors">
             HOME
           </Link>
-          <Link href="/shop" className="hover:text-amber-600 transition-colors">
+          <Link href="/alltiles" className="hover:text-amber-600 transition-colors">
             ALL TILES
           </Link>
           {session && (
