@@ -1,5 +1,6 @@
 import Image from "next/image";
 import tiles from '@/public/Tiles/tiles2.jpg'
+import Marquee from "react-fast-marquee";
 
 export default function Home() {
     return (
@@ -18,7 +19,7 @@ export default function Home() {
                 />
 
                 {/* Dark Overlay best image output */}
-                <div className="absolute inset-0 bg-black/35" />
+                <div className="absolute inset-0 bg-black/45  " />
 
                 {/* Text of the hero */}
                 <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-12 text-white">
@@ -35,11 +36,12 @@ export default function Home() {
 
                         <div className="flex flex-wrap gap-4">
                             <button className="btn btn-primary btn-lg text-base px-10 rounded-none font-medium">
-                                SHOP WALL TILES
+                                BROWSE NOW
                             </button>
-                            <button className="btn btn-outline btn-lg text-base px-10 rounded-none border-white text-white hover:bg-white hover:text-neutral-900 font-medium">
-                                BROWSE COLLECTION
-                            </button>
+                            
+                            <Marquee pauseOnHover={true}>
+                                I can be a React component, multiple React components, or just some text.
+                            </Marquee>
                         </div>
 
                         {/* Trust line */}
@@ -56,11 +58,8 @@ export default function Home() {
                     </div>
                 </div>
 
-                {/* Bottom  */}
-                <div className="absolute bottom-12 right-12 hidden xl:block text-right text-white">
-                    <p className="text-sm tracking-widest uppercase opacity-75">Modern Kitchen Collection</p>
-                    <p className="text-2xl font-light">Grey Tiles • Warm Wood • Natural Light</p>
-                </div>
+
+
             </div>
 
         </div>

@@ -5,9 +5,14 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.unsplash.com',
-        pathname: '/**', // Allows all paths from this host
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "/**", // Allows all paths from this host
+      },
+      {
+        protocol: "https",
+        hostname: "**.istockphoto.com", // The double asterisk covers all iStock subdomains
+        pathname: "/**",
       },
     ],
   },
