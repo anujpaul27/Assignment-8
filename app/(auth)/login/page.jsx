@@ -1,20 +1,18 @@
 "use client";
 
+import { authClient } from "@/app/lib/auth-client";
+import toast from "daisyui/components/toast";
 // import { Check } from "@gravity-ui/icons";
 import { useState } from "react";
 
-export default function loginPage() {
+export default function RegistrationPage() {
   const [errors, setErrors] = useState({});
 
   const validate = (data) => {
     const newErrors = {};
-
-    // Email Validation
     if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(data.email)) {
       newErrors.email = "Please enter a valid email address";
     }
-
-    // Password Validation
     if (data.password.length < 8) {
       newErrors.password = "Password must be at least 8 characters";
     } else if (!/[A-Z]/.test(data.password)) {
@@ -23,96 +21,104 @@ export default function loginPage() {
     } else if (!/[0-9]/.test(data.password)) {
       newErrors.password = "Password must contain at least one number";
     }
-
     return newErrors;
   };
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData.entries());
+    const obj = Object.fromEntries(formData.entries());
 
-    const validationErrors = validate(data);
+    const validationErrors = validate(obj);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
 
-    setErrors({});
-    alert(`Form submitted with: ${JSON.stringify(data, null, 2)}`);
-  };
-
-  const handleReset = () => {
-    setErrors({});
+    const { data, error } = await authClient.signIn.email({
+      email: obj.email,
+      password: obj.password,
+      rememberMe: true,
+      callbackURL: "/",
+    });
+    if (error) {
+      toast.error(error.message);
+    } else {
+      toast.success("Login Successful!. ");
+    }
   };
 
   return (
-    <div className="w-full flex flex-col gap-10  justify-center items-center  ">
-        <h1 className="lg:text-3xl text-xl lg:mt-30 mt-10   ">Login in your account</h1>
-      <form className="flex w-96 flex-col gap-4 p-4" onSubmit={onSubmit}>
-        {/* Email Field */}
-        <div className="form-control w-full">
-          <label className="label">
-            <span className="label-text font-medium">Email</span>
-          </label>
-          <input
-            name="email"
-            type="email"
-            placeholder="john@example.com"
-            className={`input input-bordered w-full ${errors.email ? "input-error" : ""}`}
-            required
-          />
-          {errors.email && (
-            <label className="label">
-              <span className="label-text-alt text-error">{errors.email}</span>
-            </label>
-          )}
-        </div>
+    <div className="flex justify-center  py-5 bg-white  ">
+      <div className="bg-white p-8 shadow-lg border border-gray-100">
+        <form className="flex w-80 flex-col gap-4" onSubmit={onSubmit}>
+          <h2 className="text-2xl text-center  font-bold text-gray-800 mb-2">
+            Login{" "}
+          </h2>
 
-        {/* Password Field */}
-        <div className="form-control w-full">
-          <label className="label">
-            <span className="label-text font-medium">Password</span>
-          </label>
-          <input
-            name="password"
-            type="password"
-            placeholder="Enter your password"
-            className={`input input-bordered w-full ${errors.password ? "input-error" : ""}`}
-            required
-          />
-          <label className="label">
-            <span className="label-text-alt text-gray-500">
-              Must be at least 8 characters with 1 uppercase and 1 number
-            </span>
-          </label>
-          {errors.password && (
-            <label className="label pt-0">
-              <span className="label-text-alt text-error">
-                {errors.password}
+          {/* Email */}
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text font-semibold text-gray-700">
+                Email
               </span>
             </label>
-          )}
-        </div>
+            <input
+              name="email"
+              type="email"
+              placeholder="john@example.com"
+              className={`input input-bordered bg-white text-gray-800 ${errors.email ? "input-error" : "border-gray-300"}`}
+            />
+            {errors.email && (
+              <label className="label">
+                <span className="label-text-alt text-error font-medium">
+                  {errors.email}
+                </span>
+              </label>
+            )}
+          </div>
 
-        {/* Buttons */}
-        <div className="flex gap-2 mt-2">
-          <button
-            type="submit"
-            className="btn btn-primary flex items-center gap-2"
-          >
-            {/* <Check /> */}
-            Submit
-          </button>
-          <button
-            type="reset"
-            className="btn btn-ghost border-base-300"
-            onClick={handleReset}
-          >
-            Reset
-          </button>
-        </div>
-      </form>
+          {/* Password */}
+          <div className="form-control w-full">
+            <label className="label">
+              <span className="label-text font-semibold text-gray-700">
+                Password
+              </span>
+            </label>
+            <input
+              name="password"
+              type="password"
+              placeholder="••••••••"
+              className={`input input-bordered bg-white text-gray-800 ${errors.password ? "input-error" : "border-gray-300"}`}
+            />
+
+            {errors.password && (
+              <label className="label">
+                <span className="label-text-alt text-error font-medium">
+                  {errors.password}
+                </span>
+              </label>
+            )}
+          </div>
+
+          {/* Buttons */}
+          <div className="flex gap-3 mt-4">
+            <button
+              type="submit"
+              className="btn btn-primary flex-1 text-white border-none"
+            >
+              Login
+            </button>
+            <button
+              type="reset"
+              className="flex-1 btn btn-ghost bg-gray-100 text-gray-600 hover:bg-gray-200"
+              onClick={() => setErrors({})}
+            >
+              Reset
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
