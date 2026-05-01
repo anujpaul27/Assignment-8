@@ -56,7 +56,7 @@ const BestSeller = async () => {
                   </h3>
 
                   <div className="flex items-center justify-center my-2  gap-2 text-sm">
-                    <span className="text-lg font-bold text-black  ">Price:</span> 
+                    <span className="text-lg  text-black  ">Price:</span> 
                     <span className="font-semibold text-emerald-600 text-lg  ">
                       ${(tile.price - (tile.price * 9) / 100).toFixed(2)}
                     </span>
