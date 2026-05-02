@@ -3,8 +3,24 @@ import Link from "next/link";
 
 const AllTiles = async () => {
   // Fetch data from database
-  const res = await fetch("http://localhost:3001/allTiles");
-  const data = await res.json();
+  // const res = await fetch("http://localhost:3001/allTiles");
+  // const data = await res.json();
+
+  const data = [
+    {
+      id: "tile_001",
+      title: "Ceramic Blue Tile",
+      description: "Premium ceramic tile with blue glaze finish",
+      image:
+        "https://media.istockphoto.com/id/1221207640/photo/background-millennial-pink-pale-mermaid-pattern-pastel-texture-abstract-fish-dragon-reptile.jpg?s=612x612&w=0&k=20&c=wXLDaLCybT4YxLn4SqVi_mZXyEZ0-TDfGwItMek8eWU=",
+      category: "ceramic",
+      price: 45.99,
+      currency: "USD",
+      dimensions: "60x60 cm",
+      material: "Ceramic",
+      inStock: true,
+    },
+  ];
 
   return (
     <div>
@@ -14,7 +30,7 @@ const AllTiles = async () => {
             {/* Heading Title   */}
             <h2 className="text-4xl font-bold text-neutral-900 mb-2">
               ALL TILES
-            </h2> 
+            </h2>
           </div>
 
           {/* Product Grid */}
