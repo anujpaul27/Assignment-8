@@ -1,4 +1,3 @@
-import Filtering from "@/app/Component/Filtering";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,8 +14,7 @@ const AllTiles = async () => {
             {/* Heading Title   */}
             <h2 className="text-4xl font-bold text-neutral-900 mb-2">
               ALL TILES
-            </h2>
-            <Filtering />
+            </h2> 
           </div>
 
           {/* Product Grid */}
@@ -54,7 +52,10 @@ const AllTiles = async () => {
                       {tile?.price}
                     </span>
                   </div>
-                  <span className="btn btn-success "> <Link href={`/${tile.id}`}>View Details</Link> </span>
+                  <span className="btn btn-success ">
+                    {" "}
+                    <Link href={`/${tile.id}`}>View Details</Link>{" "}
+                  </span>
                 </div>
               </div>
             ))}
