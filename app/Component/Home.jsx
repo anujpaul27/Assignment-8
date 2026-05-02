@@ -28,11 +28,7 @@ export default function Home() {
               ALL WALL TILES
             </h1>
 
-            <p className="text-lg lg:text-xl leading-relaxed mb-10 max-w-lg">
-              If you&apos;re embarking on an interior design project and you
-              want to explore the world of wall and floor tiles from the comfort
-              of your home, you&apos;ve come to the right place.
-            </p>
+             
 
             <div className="flex flex-wrap gap-4">
               <button className="btn btn-primary btn-lg text-base px-10 rounded-none font-medium">
@@ -40,8 +36,7 @@ export default function Home() {
               </button>
 
               <Marquee pauseOnHover={true}>
-                I can be a React component, multiple React components, or just
-                some text.
+                New Arrivals: Slate Grey Stone Tile | Weekly Feature: Modern Geometric Patterns | Join the Community..
               </Marquee>
             </div>
 
