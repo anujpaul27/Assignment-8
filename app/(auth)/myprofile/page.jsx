@@ -92,12 +92,12 @@ export default async function ProfilePage() {
 
             {/* Action Buttons */}
             <div className="card-actions flex flex-col gap-3 mt-10 w-full">
-              <a
-                href="/settings"
+              <Link
+                href="/myprofile/editprofile"
                 className="btn btn-outline border-neutral-300 text-neutral-700 hover:bg-neutral-100 btn-block"
               >
                 Edit Profile
-              </a>
+              </Link>
 
               <LogoutButton />
             </div>
@@ -113,6 +113,7 @@ export default async function ProfilePage() {
             ← Back to Home
           </Link>
         </div>
+        {/* Open the modal using document.getElementById('ID').showModal() method */}
       </div>
     </div>
   );

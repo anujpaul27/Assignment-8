@@ -1,6 +1,9 @@
+import Filtering from "@/app/Component/Filtering";
 import Image from "next/image";
+import Link from "next/link";
 
 const AllTiles = async () => {
+  // Fetch data from database
   const res = await fetch("http://localhost:3001/allTiles");
   const data = await res.json();
 
@@ -9,9 +12,11 @@ const AllTiles = async () => {
       <section className="py-10 bg-neutral-50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-12">
+            {/* Heading Title   */}
             <h2 className="text-4xl font-bold text-neutral-900 mb-2">
-              TILES FEATURE
+              ALL TILES
             </h2>
+            <Filtering />
           </div>
 
           {/* Product Grid */}
@@ -49,13 +54,11 @@ const AllTiles = async () => {
                       {tile?.price}
                     </span>
                   </div>
-                  <span className="btn btn-success ">View Details</span>
+                  <span className="btn btn-success "> <Link href={`/${tile.id}`}>View Details</Link> </span>
                 </div>
               </div>
             ))}
           </div>
-
-          
         </div>
       </section>
     </div>

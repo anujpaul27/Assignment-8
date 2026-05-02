@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const TileFeature = async () => {
   const res = await fetch("http://localhost:3001/tilesFeature");
@@ -12,8 +13,6 @@ const TileFeature = async () => {
             <h2 className="text-4xl font-bold text-neutral-900 mb-2">
               TILES FEATURE
             </h2>
-
-            
           </div>
 
           {/* Product Grid */}
@@ -51,7 +50,9 @@ const TileFeature = async () => {
                       {tile?.price}
                     </span>
                   </div>
-                  <span className="btn btn-success ">View Details</span>
+                  <span className="btn btn-success ">
+                    <Link href={`${tile.id}`}>View Details</Link>
+                  </span>
                 </div>
               </div>
             ))}
@@ -60,7 +61,7 @@ const TileFeature = async () => {
           {/* View All Button */}
           <div className="text-center mt-12">
             <button className="btn btn-outline border-2 border-neutral-800 text-neutral-800 hover:bg-neutral-900 hover:text-white px-10 py-3 text-base font-medium">
-              VIEW ALL BEST SELLERS
+              <Link href={"/alltiles"}>VIEW ALL BEST SELLERS</Link>
             </button>
           </div>
         </div>
