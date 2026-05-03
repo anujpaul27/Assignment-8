@@ -1,12 +1,30 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const AllTiles = async () => {
-  // Fetch data from database
-  const res = await fetch("https://tailes-server1.onrender.com/allTiles");
-  const data = await res.json();
+const AllTiles = () => {
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
-  
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("https://tailes-server1.onrender.com/allTiles");
+      const result = await res.json();
+      setData(result);
+      setFilteredData(result);
+    };
+    fetchData();
+  }, []);
+
+  const handleSearch = (e) => {
+    const searchData = e.target.value.toLowerCase();
+
+    const result = data.filter((tile) =>
+      tile.title.toLowerCase().includes(searchData),
+    );
+    setFilteredData(result);
+  };
 
   return (
     <div>
@@ -17,11 +35,24 @@ const AllTiles = async () => {
             <h2 className="text-4xl font-bold text-neutral-900 mb-2">
               ALL TILES
             </h2>
+            <form className="text-left  w-1/2 mx-auto" action="">
+              <fieldset className="fieldset">
+                <legend className="fieldset-legend text-md lg:ml-20 ">
+                  Search Tiles..{" "}
+                </legend>
+                <input
+                  onKeyUp={handleSearch}
+                  type="text"
+                  className="input mx-auto "
+                  placeholder="Type here Tiles Title"
+                />
+              </fieldset>
+            </form>
           </div>
 
           {/* Product Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {data?.map((tile) => (
+            {filteredData?.map((tile) => (
               <div
                 key={tile?.id}
                 className="group relative bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all"
