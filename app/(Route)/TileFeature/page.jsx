@@ -2,24 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 const TileFeature = async () => {
-  // const res = await fetch("http://localhost:3001/tilesFeature");
-  // const data = await res.json();
-
-  const data = [
-    {
-      id: "tile_001",
-      title: "Ceramic Blue Tile",
-      description: "Premium ceramic tile with blue glaze finish",
-      image:
-        "https://media.istockphoto.com/id/1221207640/photo/background-millennial-pink-pale-mermaid-pattern-pastel-texture-abstract-fish-dragon-reptile.jpg?s=612x612&w=0&k=20&c=wXLDaLCybT4YxLn4SqVi_mZXyEZ0-TDfGwItMek8eWU=",
-      category: "ceramic",
-      price: 45.99,
-      currency: "USD",
-      dimensions: "60x60 cm",
-      material: "Ceramic",
-      inStock: true,
-    },
-  ];
+  const res = await fetch("https://tailes-server1.onrender.com/tilesFeature");
+  const data = await res.json();
 
   return (
     <div>
